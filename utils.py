@@ -21,8 +21,6 @@ def quadratic_formula(a, b, c):
 	x1 = (-b + np.sqrt(b*b - (4 * a * c)))/(2 * a)
 	x2 = (-b - np.sqrt(b*b - (4 * a * c)))/(2 * a)
 
-	print(x1)
-
 	if abs(x1) > abs(x2):
 		x2 = c / (a * x1)
 		return [x1, x2]
@@ -36,10 +34,19 @@ def dec_to_bin_mantissa(mantissa, m):
 	r = mantissa
 	b = ""
 	for k in range(1, m):
-		if r >= 2**k:
+		if r >= 2**(-1* k):
 			b += '1'
 			r = r - 2 ** (-1 * k)
 		else:
 			b += '0'
 
 	return b
+
+def loadMatrixFromFile(filename, rows, columns):
+	return None
+
+def loadMatrixFromList(matrix, rows, columns):
+	return np.array([int(x) for x in matrix.split(':')]).reshape((rows,columns))
+
+def norm(A):
+	return max([sum(abs(A[i, :])) for i in range(A.shape[0])])
